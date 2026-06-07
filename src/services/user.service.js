@@ -22,11 +22,11 @@ export const userService = {
     return api.get(`/users/${id}`);
   },
 
-  getRating() {
+  getMyRating() {
     return api.get("/users/me/rating");
   },
 
-  getRatingGraph() {
+  getMyRatingGraph() {
     return api.get("/users/me/rating/graph");
   },
   
@@ -37,7 +37,7 @@ export const userService = {
   },
 
   // eslint-disable-next-line no-dupe-keys
-  getRating(id) {
+  getUserRating(id) {
     return api.get(`/users/${id}/rating`);
   },
 
@@ -45,7 +45,7 @@ export const userService = {
     return api.patch(`/users/${id}/rating`, data);
   },
 
-  ratingGraph(id) {
+  getUserRatingGraph(id) {
     return api.get(`/users/${id}/rating/graph`);
   },
 
