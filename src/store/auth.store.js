@@ -16,9 +16,11 @@ const clearAppStores = () => {
 };
 
 export const useAuthStore = create((set) => ({
-  authenticated: !!tokenManager.getAccessToken(),
+  // authenticated: !!tokenManager.getAccessToken(),
+  // hydrated: false,
+  authenticated: true,
+  hydrated: true,
   loading: false,
-  hydrated: false,
   initializing:false,
   session: {
     accessToken: tokenManager.getAccessToken(),

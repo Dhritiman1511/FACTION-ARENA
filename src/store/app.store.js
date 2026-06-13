@@ -5,11 +5,34 @@ export const useAppStore = create((set) => ({
 
   sidebarOpen: false,
 
-  online: navigator.onLine,
+  online: typeof navigator !== "undefined" ? navigator.onLine : true,
 
   globalLoading: false,
 
   notifications: [],
+
+  sidebarCollapsed:
+    typeof localStorage !== "undefined" &&
+    localStorage.getItem("sidebar_collapsed") === "true",
+
+  toggleSidebarCollapse: () =>
+    set((state) => {
+      const next = !state.sidebarCollapsed;
+
+      localStorage.setItem("sidebar_collapsed", next);
+
+      return {
+        sidebarCollapsed: next,
+      };
+    }),
+
+  setSidebarCollapsed: (collapsed) => {
+    localStorage.setItem("sidebar_collapsed", collapsed);
+
+    set({
+      sidebarCollapsed: collapsed,
+    });
+  },
 
   toggleSidebar: () => {
     set((state) => ({

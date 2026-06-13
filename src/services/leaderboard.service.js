@@ -1,5 +1,5 @@
 import api from "../api/axios";
-import { API } from "../constants/api";
+import { API } from "../api/endpoints";
 
 export const leaderboardService = {
   topPerformers() {

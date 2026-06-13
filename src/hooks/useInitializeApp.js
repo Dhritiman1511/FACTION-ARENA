@@ -6,6 +6,7 @@ import {
   useStreakStore,
   useLeaderboardStore,
   useContentStore,
+  useQuestionStore,
 } from "../store";
 
 export const useInitializeApp = () => {
@@ -23,6 +24,8 @@ export const useInitializeApp = () => {
 
   const fetchClasses = useContentStore((state) => state.fetchClasses);
 
+  const fetchQOTD = useQuestionStore((state) => state.fetchQOTD);
+
   useEffect(() => {
     const init = async () => {
       await initialize();
@@ -35,12 +38,20 @@ export const useInitializeApp = () => {
           fetchStreak(),
           topPerformers(),
           fetchClasses(),
+          fetchQOTD(),
         ]);
       }
     };
 
     init();
-  }, []);
+  }, [
+    initialize,
+    fetchProfile,
+    fetchStreak,
+    topPerformers,
+    fetchClasses,
+    fetchQOTD,
+  ]);
 
   return {
     hydrated,
